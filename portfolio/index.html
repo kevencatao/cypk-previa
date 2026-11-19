@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio · CYPK Soluções Digitais</title>
+<meta name="description" content="Sites e landing pages criados pela CYPK Soluções Digitais.">
+<meta name="theme-color" content="#04040a">
+<meta property="og:title" content="Portfólio · CYPK Soluções Digitais">
+<meta property="og:image" content="https://kevencatao.github.io/cypk-previa/assets/img/og-cypk.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='.4' y2='1'%3E%3Cstop offset='0' stop-color='%2336e3f6'/%3E%3Cstop offset='.5' stop-color='%234c7bff'/%3E%3Cstop offset='1' stop-color='%239446ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M112 10H60a50 50 0 0 0 0 100h38l18-28H60a22 22 0 0 1 0-44h52z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rethink+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/cypk.css">
+<style>
+  .port { position: relative; padding: 150px 0 60px; overflow: hidden; }
+  .port::before { content: ""; position: absolute; left: 50%; top: -200px; width: 1100px; height: 600px; transform: translateX(-50%); background: radial-gradient(ellipse at center, rgba(var(--v-rgb), .28), transparent 65%); pointer-events: none; }
+  .port__topo { text-align: center; margin-bottom: 56px; position: relative; }
+  .port__topo .olho { font: 500 13px/1 var(--fonte); letter-spacing: .5em; margin-bottom: 20px; }
+  .port__topo h1 { font-size: clamp(34px, 4.4vw, 52px); }
+  .port__topo p:not(.olho) { margin: 16px auto 0; max-width: 560px; color: var(--txt-2); }
+  .grade { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; }
+  .proj { grid-column: span 2; position: relative; display: block; text-decoration: none; border-radius: 18px; background: #0b0b13; border: 1px solid var(--linha); overflow: hidden; transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s; }
+  .proj:nth-child(4) { grid-column: 2 / span 2; }
+  .proj:nth-child(5) { grid-column: 4 / span 2; }
+  .proj__barra { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: #101019; border-bottom: 1px solid var(--linha); }
+  .proj__barra i { width: 8px; height: 8px; border-radius: 50%; background: #3a3a48; }
+  .proj__barra i:first-child { background: var(--violeta); box-shadow: 0 0 8px rgba(var(--v-rgb), .9); }
+  .proj__barra span { margin-left: 10px; flex: 1; height: 16px; border-radius: 6px; background: #17172200; border: 1px solid var(--linha); font-size: 11px; line-height: 14px; color: var(--txt-3); padding: 0 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .proj__tela { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #111; }
+  .proj__tela img { width: 100%; height: auto; transition: transform 6s cubic-bezier(.45,.05,.35,1); }
+  .proj[data-rolar] .proj__tela img { transform: translateY(0); }
+  .proj[data-rolar]:hover .proj__tela img, .proj[data-rolar]:focus-visible .proj__tela img { transform: translateY(calc(-100% + var(--alt, 260px))); }
+  .proj:not([data-rolar]):hover .proj__tela img { transform: scale(1.05); transition-duration: .8s; }
+  .proj__ver { position: absolute; left: 50%; top: 50%; z-index: 2; transform: translate(-50%, -30%); opacity: 0; transition: opacity .4s, transform .4s; padding: 12px 26px; border-radius: 99px; font: 600 14px/1 var(--fonte-titulo); color: #fff; background: var(--grad-btn); box-shadow: 0 10px 34px -6px rgba(var(--v-rgb), 1); pointer-events: none; }
+  .proj:hover .proj__ver, .proj:focus-visible .proj__ver { opacity: 1; transform: translate(-50%, -50%); }
+  .proj__tela::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,4,10,.55), transparent 40%); opacity: 0; transition: opacity .4s; }
+  .proj:hover .proj__tela::after { opacity: 1; }
+  .proj__info { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px 18px; }
+  .proj__info b { font: 500 17px/1.2 var(--fonte-titulo); }
+  .proj__info small { color: var(--txt-2); font-size: 13px; }
+  .so-toque { display: none; }
+  @media (hover: none) { .so-mouse { display: none; } .so-toque { display: inline; } }
+  .proj:hover { transform: translateY(-6px); border-color: rgba(var(--c-rgb), .45); box-shadow: 0 30px 60px -24px rgba(var(--v-rgb), .75), 0 0 0 1px rgba(var(--v-rgb), .3); }
+  .proj__tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 99px; font: 600 11px/1.5 var(--fonte); letter-spacing: .1em; text-transform: uppercase; color: var(--txt-2); border: 1px solid var(--linha-2); vertical-align: middle; }
+  @media (max-width: 980px) {
+    .grade { grid-template-columns: repeat(2, 1fr); }
+    .proj, .proj:nth-child(4), .proj:nth-child(5) { grid-column: auto; }
+    .proj:nth-child(5) { grid-column: 1 / -1; max-width: calc(50% - 11px); justify-self: center; width: 100%; }
+  }
+  @media (max-width: 620px) {
+    .port { padding-top: 120px; }
+    .grade { grid-template-columns: 1fr; }
+    .proj:nth-child(5) { max-width: none; }
+  }
+</style>
+</head>
+<body id="top">
+<!-- ===== Símbolos SVG (logo, ícones, degradês) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gC" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#36e3f6"/><stop offset=".5" stop-color="#4c7bff"/><stop offset="1" stop-color="#9446ff"/></linearGradient>
+    <linearGradient id="gK" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4c62ff"/><stop offset="1" stop-color="#36e3f6"/></linearGradient>
+    <linearGradient id="gradCheck" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36e3f6"/><stop offset="1" stop-color="#8f45ff"/></linearGradient>
+    <linearGradient id="gradLinha" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="500" y2="0"><stop offset="0" stop-color="#8f45ff"/><stop offset=".6" stop-color="#4c7bff"/><stop offset="1" stop-color="#36e3f6"/></linearGradient>
+    <linearGradient id="gradBarra" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f45ff" stop-opacity=".95"/><stop offset="1" stop-color="#4c7bff" stop-opacity=".08"/></linearGradient>
+    <linearGradient id="gradCurva" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="300" y2="0"><stop offset="0" stop-color="#4c7bff"/><stop offset=".5" stop-color="#36e3f6"/><stop offset="1" stop-color="#b25bff"/></linearGradient>
+    <linearGradient id="gradArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f45ff" stop-opacity=".45"/><stop offset="1" stop-color="#8f45ff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gVidro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#36e3f6"/><stop offset=".7" stop-color="#8f45ff"/><stop offset="1" stop-color="#4c7bff"/></linearGradient>
+    <linearGradient id="gVidroFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8f45ff" stop-opacity=".42"/><stop offset=".6" stop-color="#4c7bff" stop-opacity=".12"/><stop offset="1" stop-color="#36e3f6" stop-opacity=".3"/></linearGradient>
+    <clipPath id="cpTopo"><rect x="0" y="10" width="520" height="100"/></clipPath>
+    <clipPath id="cpK"><rect x="392" y="10" width="120" height="100"/></clipPath>
+    <path id="forma-c" d="M112 10H60a50 50 0 0 0 0 100h38l18-28H60a22 22 0 0 1 0-44h52z"/>
+  </defs>
+  <symbol id="marca" viewBox="0 0 492 120">
+    <use href="#forma-c" fill="url(#gC)"/>
+    <g fill="none" stroke="#fff" stroke-width="28">
+      <path d="M134-6 180 50M226-6 180 50" clip-path="url(#cpTopo)"/>
+      <path d="M180 44v66"/>
+      <path d="M264 10v100"/>
+      <path d="M250 24h56a24 24 0 0 1 0 48h-42"/>
+      <path d="M378 10v100"/>
+      <path d="M388 46 452 120" stroke-width="30" clip-path="url(#cpK)"/>
+      <path d="M384 86 472-6" stroke="url(#gK)" stroke-width="30" clip-path="url(#cpK)"/>
+    </g>
+  </symbol>
+  <symbol id="logo" viewBox="0 0 492 162">
+    <use href="#marca" width="492" height="120"/>
+    <text x="246" y="154" text-anchor="middle" textLength="470" lengthAdjust="spacing" font-family="Inter, sans-serif" font-weight="500" font-size="21" fill="#c9c9d8">SOLUÇÕES DIGITAIS.</text>
+  </symbol>
+  <symbol id="simbolo" viewBox="4 4 120 112"><use href="#forma-c" fill="url(#gC)"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 2.8a9.2 9.2 0 0 0-7.9 13.9L3 21l4.4-1.1A9.2 9.2 0 1 0 12 2.8z"/><path fill="currentColor" d="M8.7 7.4c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 1.8c.1.2.1.4 0 .6l-.5.7c-.1.2-.2.3 0 .6.5.9 1.2 1.6 2 2.1.3.2.5.2.6 0l.7-.8c.2-.2.3-.2.6-.1l1.7.8c.3.1.4.2.4.4 0 .6-.2 1.3-.8 1.7-.6.4-1.4.5-2.5.1-1.4-.5-2.9-1.5-4-2.9-.8-1-1.2-2-1.3-2.9 0-.9.3-1.5.6-1.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="url(#gradCheck)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M3.5 12.5 9 18 20.5 5.5"/></symbol>
+  <symbol id="i-device" viewBox="0 0 32 28"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="3" width="20" height="14" rx="2"/><path d="M1.5 21h19"/><rect x="21" y="9" width="9" height="15" rx="2" fill="#0a0a0f"/><path d="M24.5 21h2"/></g></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M8 7 3 12l5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></symbol>
+  <symbol id="i-meta" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M3 14.6c0-3.6 1.9-7.1 4.3-7.1 1.9 0 3.2 2 4.7 4.6 1.5-2.6 2.8-4.6 4.7-4.6 2.4 0 4.3 3.5 4.3 7.1 0 1.8-.9 2.9-2.2 2.9-1.9 0-3.3-2.4-6.8-8.4-3.5 6-4.9 8.4-6.8 8.4-1.3 0-2.2-1.1-2.2-2.9z"/></symbol>
+  <symbol id="i-graf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 20V12M10 20V5M15 20v-6M20 20V9"/></g></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></g></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></g></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.9l10.2-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 9 7 7 7-7"/></symbol>
+  <symbol id="i-cursor" viewBox="0 0 24 24"><path fill="#fff" stroke="#000" stroke-width="1.2" stroke-linejoin="round" d="M5 3l14 7.5-6 1.7-2.6 6.3z"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 3 4.5 6v5.5c0 4.5 3.2 8.2 7.5 9.5 4.3-1.3 7.5-5 7.5-9.5V6z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m8.8 12 2.2 2.2 4.2-4.4"/></symbol>
+</svg>
+
+<nav class="menu" aria-label="Menu principal">
+  <a class="menu__logo" href="../" aria-label="CYPK Soluções Digitais, início"><svg viewBox="0 0 492 120" role="img" aria-hidden="true"><use href="#marca"/></svg></a>
+  <ul>
+    <li><a href="../#diferenciais">Diferenciais</a></li>
+    <li><a href="../#depoimentos">Depoimentos</a></li>
+    <li><a href="../#valor">Valor</a></li>
+    <li><a href="../#faq">FAQ</a></li>
+  </ul>
+  <a class="menu__cta" href="../">Início</a>
+</nav>
+
+<main>
+<section class="port" aria-labelledby="titulo-port">
+  <div class="container">
+    <div class="port__topo">
+      <p class="olho grad" data-r="sobe">Portfólio</p>
+      <h1 id="titulo-port" data-r="entra" data-d="100">Projetos que já estão <span class="grad">no ar</span></h1>
+      <p data-r="entra" data-d="250"><span class="so-mouse">Passe o mouse sobre um projeto para ver a página rolando. Clique para abrir o site completo.</span><span class="so-toque">Toque em um projeto para abrir o site completo.</span></p>
+    </div>
+    <div class="grade">
+      <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/tezorine-previa/" target="_blank" rel="noopener" data-r="entra">
+        <div class="proj__barra"><i></i><i></i><i></i><span>barbearia-tezorine</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-tezorine.webp" alt="Página da Barbearia Tezorine" loading="lazy" width="720" height="1350"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Barbearia Tezorine</b><small>Barbearia por assinatura · Manaus</small></div>
+      </a>
+      <a class="proj" href="https://kevencatao.github.io/nails-pink-previa/" target="_blank" rel="noopener" data-r="entra" data-d="120">
+        <div class="proj__barra"><i></i><i></i><i></i><span>nails-pink</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-nailspink.webp" alt="Página da Nails Pink Esmalteria" loading="lazy" width="720" height="450"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Nails Pink Esmalteria</b><small>Esmalteria · Manaus</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/studio-jully-catao-previa/" target="_blank" rel="noopener" data-r="entra" data-d="240">
+        <div class="proj__barra"><i></i><i></i><i></i><span>studio-jully-catao</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-jully.webp" alt="Página do Studio Jully Catão" loading="lazy" width="720" height="1350"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Studio Jully Catão</b><small>Hairstylist · Lauro de Freitas</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/prumo-barbearia-site/" target="_blank" rel="noopener" data-r="entra" data-d="120">
+        <div class="proj__barra"><i></i><i></i><i></i><span>prumo-barbearia</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-prumo.webp" alt="Página da Prumo Barbearia" loading="lazy" width="720" height="1350"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Prumo Barbearia <span class="proj__tag">Conceito</span></b><small>Barbearia por assinatura</small></div>
+      </a>
+      <a class="proj" href="https://kevencatao.github.io/nails2you-moema-previa/" target="_blank" rel="noopener" data-r="entra" data-d="240">
+        <div class="proj__barra"><i></i><i></i><i></i><span>nails2you-moema</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-nails2you.webp" alt="Página da Nails2You Moema" loading="lazy" width="720" height="450"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Nails2You Moema <span class="proj__tag">Conceito</span></b><small>Esmalteria</small></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="duvidas" aria-labelledby="titulo-duvidas">
+  <div class="chao" aria-hidden="true"></div>
+  <div class="chao-luz" aria-hidden="true"></div>
+  <div class="container duvidas__grid">
+    <div>
+      <h2 id="titulo-duvidas" data-r="sobe">Ainda restam <span class="grad">dúvidas?</span></h2>
+      <p data-r="sobe">Estamos à disposição para responder. Fale direto com a gente pelo botão abaixo.</p>
+      <div data-r="sobe"><a class="btn-cheio" href="#" data-whats><svg><use href="#i-zap"/></svg>Fale conosco</a></div>
+    </div>
+    <div class="duvidas__arte" data-r="sobe" aria-hidden="true">
+      <div class="vidro3d" style="left:34%;top:4%;width:62%;height:86%"><svg viewBox="-10 -10 150 140">
+        <use href="#forma-c" transform="translate(12 9)" fill="rgba(40,20,120,.35)" stroke="rgba(76,123,255,.3)" stroke-width="1"/>
+        <use href="#forma-c" transform="translate(9 6.5)" fill="rgba(50,25,140,.3)" stroke="rgba(76,123,255,.4)" stroke-width="1"/>
+        <use href="#forma-c" transform="translate(6 4.5)" fill="rgba(60,30,160,.28)" stroke="rgba(143,69,255,.55)" stroke-width="1.1"/>
+        <use href="#forma-c" transform="translate(3 2)" fill="rgba(80,40,200,.25)" stroke="rgba(143,69,255,.75)" stroke-width="1.2"/>
+        <use href="#forma-c" fill="url(#gVidroFill)" stroke="url(#gVidro)" stroke-width="2"/>
+      </svg></div>
+      <div class="zap3d" style="left:12%;top:22%"><svg style="color:#fff"><use href="#i-zap"/></svg></div>
+    </div>
+  </div>
+  <div class="duvidas__linha" aria-hidden="true"><span class="selo-marca"><svg><use href="#simbolo"/></svg></span></div>
+</section>
+</main>
+
+
+<footer class="rodape">
+  <div class="container">
+    <svg class="rodape__logo" viewBox="0 0 492 162" role="img" aria-label="CYPK Soluções Digitais"><use href="#logo"/></svg>
+    <p>Tecnologia e design a serviço do seu resultado.</p>
+    <div class="rodape__redes"><a href="#" data-whats aria-label="WhatsApp da CYPK"><svg style="color:#fff"><use href="#i-zap"/></svg></a></div>
+    <small>© 2026 CYPK Soluções Digitais. Todos os direitos reservados.</small>
+    <div class="rodape__faixa" aria-hidden="true"><div data-dup><span>Com a estrutura certa, sua página trabalha por você 24 horas por dia.</span><span>Com a estrutura certa, sua página trabalha por você 24 horas por dia.</span><span>Com a estrutura certa, sua página trabalha por você 24 horas por dia.</span></div></div>
+  </div>
+</footer>
+
+<script>
+  /* altura visível de cada tela para a rolagem no hover */
+  document.querySelectorAll(".proj[data-rolar]").forEach(function (p) {
+    var t = p.querySelector(".proj__tela");
+    function med() { p.style.setProperty("--alt", t.clientHeight + "px"); }
+    med(); window.addEventListener("resize", med);
+  });
+</script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="../assets/cypk.js"></script>
+</body>
+</html>
