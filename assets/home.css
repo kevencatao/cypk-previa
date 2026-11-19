@@ -157,7 +157,11 @@
 .cartoes { display: grid; gap: 22px; }
 .cartoes--3 { grid-template-columns: repeat(3, 1fr); }
 .cartoes--2 { grid-template-columns: repeat(2, 1fr); margin-top: 22px; }
-.cartoes--duo { grid-template-columns: repeat(2, 1fr); max-width: 960px; margin-inline: auto; }
+.cartoes--solo { max-width: 1040px; margin-inline: auto; }
+.cartoes--solo .cartao { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; }
+.cartoes--solo .cartao__txt { padding: 40px 52px 70px 16px; }
+.cartoes--solo .cartao h3 { font-size: clamp(24px, 2.4vw, 30px); }
+.cartoes--solo .cartao p { font-size: 16px; }
 .cartao {
   position: relative; overflow: hidden; isolation: isolate; border-radius: var(--raio);
   background: var(--cartao); border: 1px solid var(--linha);
@@ -182,7 +186,7 @@
 .cartoes--2 .cartao p { margin-inline: auto; max-width: 520px; }
 .centro { text-align: center; margin-top: 50px; }
 @media (max-width: 1000px) { .cartoes--3 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 720px) { .cartoes--3, .cartoes--2, .cartoes--duo { grid-template-columns: 1fr; } .cartao__txt { padding: 0 22px 50px; } }
+@media (max-width: 720px) { .cartoes--3, .cartoes--2, .cartoes--solo .cartao { grid-template-columns: 1fr; } .cartao__txt, .cartoes--solo .cartao__txt { padding: 0 22px 50px; } }
 
 /* --- mockup: gráfico de vendas --- */
 .mk { position: absolute; inset: 0; }
@@ -200,19 +204,6 @@
 .mk-grafico .ponto { opacity: 0; transition: opacity .5s 2.4s; }
 .ativo .mk-grafico .ponto { opacity: 1; }
 .dica { position: absolute; padding: 4px 10px; border-radius: 99px; font: 600 11px/1.3 var(--fonte); background: linear-gradient(90deg, var(--azul), var(--violeta)); box-shadow: 0 0 18px rgba(var(--v-rgb), .9); }
-
-/* --- mockup: grade de integrações --- */
-.mk-integra { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(5, 1fr); gap: 10px; padding: 8%; background: radial-gradient(circle at 50% 50%, rgba(var(--v-rgb), .3), transparent 60%); }
-.mk-integra i { border-radius: 14px; background: #101018; border: 1px solid rgba(255,255,255,.05); animation: piscaCel 5s ease-in-out infinite; animation-delay: calc(var(--d, 0) * -1s); }
-@keyframes piscaCel { 0%, 100% { background: #0e0e16; } 50% { background: #15152a; } }
-.mk-integra .app { position: absolute; width: 21%; aspect-ratio: 1; border-radius: 18px; display: grid; place-items: center;
-  background: linear-gradient(145deg, #6a8bff, #7b3cff); box-shadow: 0 12px 30px -8px rgba(var(--v-rgb), .9), inset 0 2px 0 rgba(255,255,255,.55); animation: flutua 5s ease-in-out infinite; }
-.mk-integra .app svg { width: 52%; height: 52%; }
-.mk-integra .app:nth-of-type(1) { left: 27%; top: 27%; }
-.mk-integra .app:nth-of-type(2) { left: 52%; top: 27%; animation-delay: -1.2s; }
-.mk-integra .app:nth-of-type(3) { left: 27%; top: 52%; animation-delay: -2.4s; }
-.mk-integra .app:nth-of-type(4) { left: 52%; top: 52%; animation-delay: -3.6s; }
-.mk-integra .pilula { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; padding: 6px 14px; border-radius: 99px; font-size: 12px; background: #0b0b14; border: 1px solid rgba(var(--c-rgb), .7); box-shadow: 0 0 20px rgba(var(--v-rgb), .8); }
 
 .cursor { position: absolute; width: 22px; height: 22px; z-index: 4; filter: drop-shadow(0 2px 4px rgba(0,0,0,.6)); }
 
@@ -308,6 +299,14 @@
 .preco__valor small { font: 500 22px/1 var(--fonte-titulo); margin-top: 16px; }
 .preco__valor strong { font: 500 82px/1 var(--fonte-titulo); letter-spacing: -.03em; }
 .preco__obs { color: var(--txt-2); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 30px; }
+.preco__extras { margin: -12px 0 26px; padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--linha); text-align: left; }
+.preco__extras-rot { font: 600 11px/1 var(--fonte); letter-spacing: .14em; text-transform: uppercase; color: var(--ciano); margin-bottom: 10px; }
+.preco__extras dl, .preco__extras dd { margin: 0; }
+.preco__extras dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; font-size: 14px; }
+.preco__extras dl > div + div { margin-top: 9px; padding-top: 9px; border-top: 1px dashed var(--linha-2); }
+.preco__extras dt { color: var(--txt-2); }
+.preco__extras dd { font-weight: 600; color: var(--txt); white-space: nowrap; }
+.preco__extras dd small { font-weight: 400; color: var(--txt-3); font-size: 12px; margin-left: 4px; }
 .preco .btn-cheio { width: 100%; }
 .preco__pe { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; color: var(--txt-3); font-size: 13px; }
 .preco__pe svg { width: 16px; height: 16px; }
