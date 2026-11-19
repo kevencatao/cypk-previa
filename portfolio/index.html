@@ -22,6 +22,7 @@
   .port__topo p:not(.olho) { margin: 16px auto 0; max-width: 560px; color: var(--txt-2); }
   .grade { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; }
   .proj { grid-column: span 2; position: relative; display: block; text-decoration: none; border-radius: 18px; background: #0b0b13; border: 1px solid var(--linha); overflow: hidden; transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s, box-shadow .45s; }
+  .proj:last-child:nth-child(3n+1) { grid-column: 3 / span 2; }
   .proj__barra { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: #101019; border-bottom: 1px solid var(--linha); }
   .proj__barra i { width: 8px; height: 8px; border-radius: 50%; background: #3a3a48; }
   .proj__barra i:first-child { background: var(--violeta); box-shadow: 0 0 8px rgba(var(--v-rgb), .9); }
@@ -44,7 +45,7 @@
   .proj__tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 99px; font: 600 11px/1.5 var(--fonte); letter-spacing: .1em; text-transform: uppercase; color: var(--txt-2); border: 1px solid var(--linha-2); vertical-align: middle; }
   @media (max-width: 980px) {
     .grade { grid-template-columns: repeat(2, 1fr); }
-    .proj { grid-column: auto; }
+    .proj, .proj:last-child:nth-child(3n+1) { grid-column: auto; }
   }
   @media (max-width: 620px) {
     .port { padding-top: 120px; }
@@ -122,27 +123,47 @@
         <div class="proj__tela"><img src="../assets/img/port-montfort.webp" alt="Página do Montfort Group" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
         <div class="proj__info"><b>Montfort Group</b><small>Commodities e energia · Genebra</small></div>
       </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://sereinwealth.com/" target="_blank" rel="noopener" data-r="entra" data-d="120">
+        <div class="proj__barra"><i></i><i></i><i></i><span>sereinwealth.com</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-serein.webp" alt="Página da Serein Wealth Advisors" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Serein Wealth</b><small>Gestão de patrimônio</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://www.tibdigital.com/" target="_blank" rel="noopener" data-r="entra" data-d="240">
+        <div class="proj__barra"><i></i><i></i><i></i><span>tibdigital.com</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-tib.webp" alt="Página da TIB Digital" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>TIB Digital</b><small>Estúdio de software com IA · Austin e Hong Kong</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://marylgonzalez.com/" target="_blank" rel="noopener" data-r="entra">
+        <div class="proj__barra"><i></i><i></i><i></i><span>marylgonzalez.com</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-maryl.webp" alt="Página de Maryl Gonzalez" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Maryl Gonzalez</b><small>Design e tecnologia · Kansas City</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://www.zenarate.com/" target="_blank" rel="noopener" data-r="entra" data-d="120">
+        <div class="proj__barra"><i></i><i></i><i></i><span>zenarate.com</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-zenarate.webp" alt="Página da Zenarate" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Zenarate</b><small>Plataforma de atendimento com IA</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://charmling.app/" target="_blank" rel="noopener" data-r="entra" data-d="240">
+        <div class="proj__barra"><i></i><i></i><i></i><span>charmling.app</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-charmling.webp" alt="Página do aplicativo Charmling" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Charmling</b><small>Aplicativo para Mac</small></div>
+      </a>
+      <a class="proj" data-rolar style="--alt:0px" href="https://stanza27.com/" target="_blank" rel="noopener" data-r="entra">
+        <div class="proj__barra"><i></i><i></i><i></i><span>stanza27.com</span></div>
+        <div class="proj__tela"><img src="../assets/img/port-stanza.webp" alt="Página da Stanza27" loading="lazy" width="720" height="1800"><span class="proj__ver">Ver projeto</span></div>
+        <div class="proj__info"><b>Stanza27</b><small>Desenvolvimento web · Verona</small></div>
+      </a>
       <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/tezorine-previa/" target="_blank" rel="noopener" data-r="entra" data-d="120">
         <div class="proj__barra"><i></i><i></i><i></i><span>barbearia-tezorine</span></div>
         <div class="proj__tela"><img src="../assets/img/port-tezorine.webp" alt="Página da Barbearia Tezorine" loading="lazy" width="720" height="1350"><span class="proj__ver">Ver projeto</span></div>
         <div class="proj__info"><b>Barbearia Tezorine</b><small>Barbearia por assinatura · Manaus</small></div>
       </a>
-      <a class="proj" href="https://kevencatao.github.io/nails-pink-previa/" target="_blank" rel="noopener" data-r="entra" data-d="240">
-        <div class="proj__barra"><i></i><i></i><i></i><span>nails-pink</span></div>
-        <div class="proj__tela"><img src="../assets/img/port-nailspink.webp" alt="Página da Nails Pink Esmalteria" loading="lazy" width="720" height="450"><span class="proj__ver">Ver projeto</span></div>
-        <div class="proj__info"><b>Nails Pink Esmalteria</b><small>Esmalteria · Manaus</small></div>
-      </a>
-      <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/studio-jully-catao-previa/" target="_blank" rel="noopener" data-r="entra">
-        <div class="proj__barra"><i></i><i></i><i></i><span>studio-jully-catao</span></div>
-        <div class="proj__tela"><img src="../assets/img/port-jully.webp" alt="Página do Studio Jully Catão" loading="lazy" width="720" height="1350"><span class="proj__ver">Ver projeto</span></div>
-        <div class="proj__info"><b>Studio Jully Catão</b><small>Hairstylist · Lauro de Freitas</small></div>
-      </a>
-      <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/prumo-barbearia-site/" target="_blank" rel="noopener" data-r="entra" data-d="120">
+      <a class="proj" data-rolar style="--alt:0px" href="https://kevencatao.github.io/prumo-barbearia-site/" target="_blank" rel="noopener" data-r="entra" data-d="240">
         <div class="proj__barra"><i></i><i></i><i></i><span>prumo-barbearia</span></div>
         <div class="proj__tela"><img src="../assets/img/port-prumo.webp" alt="Página da Prumo Barbearia" loading="lazy" width="720" height="1350"><span class="proj__ver">Ver projeto</span></div>
         <div class="proj__info"><b>Prumo Barbearia <span class="proj__tag">Conceito</span></b><small>Barbearia por assinatura</small></div>
       </a>
-      <a class="proj" href="https://kevencatao.github.io/nails2you-moema-previa/" target="_blank" rel="noopener" data-r="entra" data-d="240">
+      <a class="proj" href="https://kevencatao.github.io/nails2you-moema-previa/" target="_blank" rel="noopener" data-r="entra">
         <div class="proj__barra"><i></i><i></i><i></i><span>nails2you-moema</span></div>
         <div class="proj__tela"><img src="../assets/img/port-nails2you.webp" alt="Página da Nails2You Moema" loading="lazy" width="720" height="450"><span class="proj__ver">Ver projeto</span></div>
         <div class="proj__info"><b>Nails2You Moema <span class="proj__tag">Conceito</span></b><small>Esmalteria</small></div>
